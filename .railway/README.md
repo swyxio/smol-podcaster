@@ -4,6 +4,8 @@
 
 Railway stops reading the former Config as Code files on December 1, 2026. See [Railway migration documentation](https://docs.railway.com/infrastructure-as-code#migrating-from-config-as-code).
 
+The existing Railway defaults are `ON_FAILURE` with 10 retries and sleeping disabled. Railway normalizes those values out of its raw configuration, so the authoring file omits them to keep subsequent plans empty. Live service and deployment readback verified those defaults after migration.
+
 Secrets stay on Railway through `preserve()` references. Do not import decrypted variable values into this file.
 
 Install the pinned SDK and preview configuration changes:

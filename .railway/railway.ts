@@ -6,12 +6,7 @@ export default defineRailway(() => {
   const worker = service("worker", {
     source: smolPodcaster,
     build: { builder: "NIXPACKS" },
-    deploy: {
-      runtime: "V2",
-      sleepApplication: false,
-      restartPolicyType: "ON_FAILURE",
-      restartPolicyMaxRetries: 10,
-    },
+    deploy: { runtime: "V2" },
     start: "gunicorn web:app",
     replicas: { "us-west2": 1 },
     env: {
@@ -23,12 +18,7 @@ export default defineRailway(() => {
   const web = service("web", {
     source: smolPodcaster,
     build: { builder: "NIXPACKS" },
-    deploy: {
-      runtime: "V2",
-      sleepApplication: false,
-      restartPolicyType: "ON_FAILURE",
-      restartPolicyMaxRetries: 10,
-    },
+    deploy: { runtime: "V2" },
     start: "gunicorn web:app",
     replicas: { "us-west2": 1 },
     env: {
